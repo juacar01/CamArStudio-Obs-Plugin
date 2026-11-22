@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CamAr Studio OBS — Plugin de Belleza IA en Tiempo Real</title>
+  <style>
+    :root {
+      --bg: #0f0d16;
+      --surface: #181523;
+      --surface-2: #221d33;
+      --border: #332a4d;
+      --text: #f5f2ff;
+      --muted: #b8adc9;
+      --accent: #f65c9b;
+      --accent-2: #8b5cf6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top right, rgba(139,92,246,0.16), transparent 45%),
+                  radial-gradient(circle at top left, rgba(246,92,155,0.12), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .hero img {
+      width: 92px;
+      height: 92px;
+      border-radius: 20px;
+      box-shadow: 0 12px 32px rgba(246, 92, 155, 0.25);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(139, 92, 246, 0.18);
+      border: 1px solid rgba(139, 92, 246, 0.45);
+      color: #d8c7ff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    h1 { font-size: 2.3rem; line-height: 1.15; margin-bottom: 10px; }
+    .subtitle { color: var(--muted); font-size: 1.08rem; max-width: 680px; }
+    .cta-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); opacity: 0.94; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+    .btn-secondary { background: var(--surface-2); border: 1px solid var(--border); color: var(--text); }
+
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 1.55rem; margin-bottom: 18px; color: #fff; }
+    h3 { font-size: 1.12rem; margin-bottom: 10px; color: #f6c2da; }
+    p { color: var(--muted); margin-bottom: 12px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .card ul { list-style: none; color: var(--muted); font-size: 0.94rem; }
+    .card li { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .card li:last-child { border-bottom: none; }
+    .steps { counter-reset: step; list-style: none; }
+    .steps li {
+      position: relative;
+      padding: 14px 16px 14px 52px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    code {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.88em;
+      color: #f9d5e5;
+    }
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: 0.9rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="hero">
+        <img src="camar_logo.png" alt="CamAr Studio OBS Logo" />
+        <div>
+          <span class="badge">OBS Studio Plugin · Windows 64-bit · Direct3D 11 + DirectML</span>
+          <h1>CamAr Studio OBS</h1>
+          <p class="subtitle">
+            Filtro profesional de belleza y retoque facial en tiempo real para OBS Studio.
+            Tracking síncrono de <strong>0 retraso</strong>, color <strong>1:1 passthrough</strong> y aceleración total por GPU sin modificar archivos de OBS.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://github.com/juacar01/CamArStudio-Obas-Plugin/releases" target="_blank" rel="noopener">
+              Descargar Instalador / Portable
+            </a>
+            <a class="btn btn-secondary" href="https://github.com/juacar01/CamArStudio-Obas-Plugin" target="_blank" rel="noopener">
+              Ver Releases en GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="ventajas">
+      <h2>Arquitectura y Ventajas Clave</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>0 ms de Desfase</h3>
+          <p>Downsample GPU a 270p y tracking síncrono sobre el mismo frame <code>N</code> con DirectML (478 landmarks + iris + blendshapes).</p>
+        </div>
+        <div class="card">
+          <h3>Color 1:1 Passthrough</h3>
+          <p>Respeta intacta la gama y el espacio de color de OBS para combinarlo sin cambios de tono junto a tus LUTs o filtros de color.</p>
+        </div>
+        <div class="card">
+          <h3>Dependencias Aisladas</h3>
+          <p>Carga su propia copia privada <code>camar_onnxruntime.dll</code> + <code>DirectML.dll</code>; cero conflictos con <code>obs-backgroundremoval</code>.</p>
+        </div>
+        <div class="card">
+          <h3>Binario Protegido</h3>
+          <p>30 shaders HLSL precompilados en bytecode DXBC, sin código HLSL en texto plano ni símbolos de depuración.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="instalacion">
+      <h2>Instalación</h2>
+      <ol class="steps">
+        <li>Descarga la última versión desde <a href="https://github.com/juacar01/CamArStudio-Obas-Plugin/releases" target="_blank" rel="noopener">GitHub Releases</a>: elige el <strong>Instalador (<code>CamAr-OBS-vX.Y.Z-Setup.exe</code>)</strong> o el <strong>Portable (<code>CamAr-OBS-vX.Y.Z-Portable.zip</code>)</strong>.</li>
+        <li>Cierra <strong>OBS Studio</strong> antes de instalar.</li>
+        <li>Si usas el instalador <code>.exe</code>, detectará automáticamente tu carpeta de OBS Studio (o usa <em>Examinar...</em> para instalaciones portables). Si usas el <code>.zip</code>, extrae <code>obs-plugins/</code> y <code>data/</code> en la raíz de OBS.</li>
+        <li>Al abrir OBS verás brevemente el popup animado de carga mientras los modelos IA se inicializan en DirectML sin congelar la interfaz.</li>
+      </ol>
+    </section>
+
+    <section id="configuracion">
+      <h2>Configuración en OBS Studio</h2>
+      <ol class="steps">
+        <li>Haz clic derecho sobre tu fuente de cámara (o escena de cámara) → <strong>Filtros</strong>.</li>
+        <li>En <strong>Filtros de efecto</strong> pulsa <strong>+</strong> y selecciona <code>CamAr Studio Beauty Filter</code>.</li>
+        <li><strong>Cámaras verticales:</strong> si la cámara entra horizontal (<code>1920×1080</code>) antes de rotarla en el lienzo, ajusta <code>🔄 Rotación de Cámara (para Tracker IA)</code> a <code>90° (Vertical Derecha)</code> o <code>270° (Vertical Izquierda)</code>.</li>
+        <li><strong>Orden recomendado:</strong> mantén <code>CamAr Studio Beauty Filter</code> como primer filtro y aplica tus filtros de color/LUT después.</li>
+      </ol>
+    </section>
+
+    <section id="funcionalidades">
+      <h2>Catálogo Completo de Funcionalidades</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>💆‍♀️ Rostro &amp; Piel</h3>
+          <ul>
+            <li>Suavizado de Piel (%)</li>
+            <li>Blanqueamiento Radiante (%)</li>
+            <li>Corrector / Imperfecciones (%)</li>
+            <li>Suavizar Arrugas (%)</li>
+            <li>Reducir Ojeras y Bolsas (%)</li>
+            <li>Claridad de Piel e Iluminación 3D (%)</li>
+            <li>Base / Tez (7 tonos + Intensidad)</li>
+            <li>Contorno y Armonía Facial (%)</li>
+            <li>Afinado de Rostro y Nariz / Relieve</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>👁️ Ojos, Cejas &amp; Mirada</h3>
+          <ul>
+            <li>Agrandar y Redondear Ojos (%)</li>
+            <li>Forma de Ojo (6 perfiles)</li>
+            <li>Pupilentes 3D (7 colores + Opacidad)</li>
+            <li>Brillo Ocular / Esclera (%)</li>
+            <li>Encuadre de Mirada (%)</li>
+            <li>Aclarar y Definición de Ojos (%)</li>
+            <li>Pestañas y Delineado (%)</li>
+            <li>Sombras (8 colores, 4 estilos)</li>
+            <li>Cejas (5 colores, 4 estilos, Elevar)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>💋 Boca, Dientes &amp; Barba</h3>
+          <ul>
+            <li>Intensidad Labial (%)</li>
+            <li>8 tonos de Labial 3D</li>
+            <li>Definición y Volumen de Labios (%)</li>
+            <li>Blanqueamiento Dental (%) estabilizado</li>
+            <li>Realce de Barba (%) + 4 tonos</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🎬 Fondo, IA &amp; Rendimiento</h3>
+          <ul>
+            <li>Desenfoque de Fondo Bokeh (%)</li>
+            <li>Iluminación Inteligente (AI Lighting)</li>
+            <li>Reducción de Ruido Bilateral</li>
+            <li>Perfil: Equilibrado / Calidad / FPS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="requisitos">
+      <h2>Requisitos del Sistema</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Sistema Operativo:</strong> Windows 10 o Windows 11 (64-bit)</li>
+          <li><strong>Host:</strong> OBS Studio 30.x o superior (64-bit, Direct3D 11)</li>
+          <li><strong>Gráficos:</strong> GPU compatible con Direct3D 11 y DirectML (NVIDIA, AMD o Intel)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      CamAr Studio OBS Plugin · Distribución oficial en
+      <a href="https://github.com/juacar01/CamArStudio-Obas-Plugin" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+</body>
+</html>
