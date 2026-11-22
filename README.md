@@ -3,9 +3,9 @@
 Plugin nativo de **belleza y retoque facial en tiempo real** para **OBS Studio** (Windows 64-bit), construido en **Rust + Direct3D 11 + DirectML GPU**.
 
 > **Descargas oficiales (Instalador `.exe` y Portable `.zip`):**  
-> [GitHub Releases — CamArStudio-Obas-Plugin](https://github.com/juacar01/CamArStudio-Obas-Plugin/releases)  
+> [GitHub Releases — CamArStudio-Obs-Plugin](https://github.com/juacar01/CamArStudio-Obs-Plugin/releases)  
 > **Documentación web (GitHub Pages):**  
-> [juacar01.github.io/CamArStudio-Obas-Plugin](https://juacar01.github.io/CamArStudio-Obas-Plugin/)
+> [juacar01.github.io/CamArStudio-Obs-Plugin](https://juacar01.github.io/CamArStudio-Obs-Plugin/)
 
 ---
 
@@ -50,7 +50,7 @@ Plugin nativo de **belleza y retoque facial en tiempo real** para **OBS Studio**
 ## 📦 Instalación
 
 ### Opción A: Instalador Oficial (`.exe`) — Recomendado
-1. Descarga `CamAr-OBS-vX.Y.Z-Setup.exe` desde [Releases](https://github.com/juacar01/CamArStudio-Obas-Plugin/releases).
+1. Descarga `CamAr-OBS-vX.Y.Z-Setup.exe` desde [Releases](https://github.com/juacar01/CamArStudio-Obs-Plugin/releases).
 2. Cierra **OBS Studio** y ejecuta el instalador.
 3. El asistente detectará automáticamente tu carpeta de OBS Studio (o te permitirá elegir una instalación portable con **Examinar...**).
 4. Abre OBS Studio, haz clic derecho en tu fuente de cámara/escena → **Filtros** → **+** en *Filtros de efecto* → **`CamAr Studio Beauty Filter`**.
