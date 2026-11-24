@@ -14,7 +14,7 @@ Plugin nativo de **belleza y retoque facial en tiempo real** para **OBS Studio**
 - **Tracking IA de 0 retraso:** Inferencia síncrona por frame con modelos ONNX (`FaceMesh` 478 puntos con iris, `face_blendshapes`, `UltraFace` y segmentación multiclase) acelerada por **DirectML GPU**.
 - **Aislamiento total de dependencias:** Usa su propia librería privada `camar_onnxruntime.dll` + `DirectML.dll` dentro de `obs-plugins/64bit/`, sin modificar archivos originales de OBS ni chocar con otros plugins (como `obs-backgroundremoval`).
 - **Color 1:1 Passthrough:** Respeta intacta la gestión de color y gamma de OBS Studio para que puedas encadenar tus propios filtros de color encima sin distorsiones.
-- **Soporte nativo para cámaras verticales (`90° / 180° / 270°`):** Pre-rotación y des-rotación en VRAM antes del tracker IA.
+- **Soporte nativo para cámaras verticales (`90° / 180° / 270°`):** Detección automática de la orientación del rostro con pre-rotación y des-rotación en VRAM antes del tracker IA (sin configuración manual).
 - **Shaders DXBC precompilados & arranque no bloqueante:** Los shaders HLSL van precompilados en bytecode binario dentro de `camar_obs.dll` y los motores IA se inicializan en segundo plano mostrando un popup animado con el logo de CamAr.
 
 ---
@@ -63,7 +63,7 @@ Plugin nativo de **belleza y retoque facial en tiempo real** para **OBS Studio**
 
 ## ⚙️ Configuración Rápida Recomendada en OBS
 
-- **Cámara vertical física:** Si tu cámara entra acostada (`1920×1080`) al filtro antes de rotarla en el lienzo vertical de OBS, selecciona **`90° (Vertical Derecha)`** o **`270° (Vertical Izquierda)`** en **🔄 Rotación de Cámara (para Tracker IA)**.
+- **Cámara vertical física:** Si tu cámara entra acostada (`1920×1080`) al filtro antes de rotarla en el lienzo vertical de OBS, el filtro detecta automáticamente la orientación (`0° / 90° / 180° / 270°`) y la corrige; no necesitas configurar nada.
 - **Orden de filtros:** Coloca `CamAr Studio Beauty Filter` **primero** en la pila de filtros y añade después tus LUTs o filtros de corrección de color de OBS si los necesitas.
 
 ---
